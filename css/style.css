@@ -36,12 +36,43 @@ hr{
 #nav li{
 	list-style: none;
 	display: inline-block;
-	padding: 30px;
 }
 
 #nav li a{
 	color: white;
+	display: block;
+	position: relative;
 	text-decoration: none;
+	padding: 30px;
+	box-sizing: border-box;
+}
+
+#nav li a::before, #nav li a::after{
+	content: '';
+	transform: scale(0);
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	transition: .5s all ease;
+	box-sizing: border-box;
+}
+
+#nav li a::before{
+	border-left: 2px solid white;
+	border-bottom: 2px solid white;
+	transform-origin: 0 100%;
+}
+
+#nav li a::after{
+	border-top: 2px solid white;
+	border-right: 2px solid white;
+	transform-origin: 100% 0;
+}
+
+#nav li a:hover:before, #nav li a:hover:after{
+	transform: scale(1);
 }
 
 #content{
@@ -54,6 +85,7 @@ hr{
 	border-radius: 5px;
 	border: 1px solid lightgrey;
 	box-shadow: 0px 2px 5px grey;
+	z-index: 2;
 }
 
 #login h1{
@@ -67,23 +99,27 @@ hr{
 	border:1px solid grey;
 	margin: 20px auto;
 	display: block;
-	background: white;
+	background: transparent;
 	width:-webkit-fill-available;
 	z-index: 1000;
+	overflow: hidden;
 }
 
 .icon{
-	z-index: -20000;
+	display: block;
+	position: relative;
+	z-index: 30;
 }
 
 .icon::before{
 	content: '';
 	position: absolute;
 	text-align: center;
-	padding: 7.5px 5px;
+	top: 0;
+	left: 0px;
+	padding:7.5px 5px;
 	border-radius: 5px 0px 0px 5px;
 	border: 1px solid black;
-	display: block;
 	background: #f0f0f0;
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;

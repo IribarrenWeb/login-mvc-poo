@@ -1,12 +1,14 @@
 <?php 
 
-	require_once "../models/users.php";
+	require_once "../data/userData.php";
 
 	/**
 	 * User controller
 	 */
 	class UserController
 	{
+		private static $userData;
+		// private static $user;
 
 	    public static function getDataLogin($username,$password)
 	    {
@@ -19,6 +21,7 @@
 
 	        if ($validation) 
 	        {
+	        	self::$userData = $validation;
 	         	$_SESSION['usuario'] = $validation;
 	         	return true;
 	        }
@@ -26,5 +29,12 @@
 	        {
 	        	return false;
 	        }
+	    }
+
+	    public static function getDataUser()
+	    {
+	    	$response = UserData::getUserData(self::$userData);
+
+	    	return $response;
 	    }
 	}

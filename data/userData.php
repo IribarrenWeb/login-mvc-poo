@@ -1,5 +1,7 @@
 <?php 
-
+	
+	require_once "../data/conex.php";
+	require_once "../models/users.php";
 	/**
 	 * summary
 	 */
@@ -30,4 +32,19 @@
 	       		return false;
 	       	}
 	    }
+
+	    public static function getUserData($user)
+	    {
+	    	$udata = new User();
+
+	    	$udata->setId($user['id']);
+	    	$udata->setEmail($user['email']);
+	    	$udata->setUsername($user['usuario']);
+	    	$udata->setName($user['nombre']);
+	    	$udata->setPassword($user['password']);
+	    	$udata->setDate($user['date']);
+	    	$udata->setPrivilegio($user['privilegio']);
+
+	    	return $udata;
+	    } 
 	}

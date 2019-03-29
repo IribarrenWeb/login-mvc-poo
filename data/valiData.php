@@ -1,30 +1,36 @@
 <?php 
     
+    require_once "../helps/functions.php"; 
     require_once "../controllers/UserControll.php"; 
 
-    if (isset($_POST['username']) && isset($_POST['password'])) 
+    $response = array('estado' => false );
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     {
-        
-        $username = $_POST['username']; 
-        $password = $_POST['password'];
-
-        $response = array();
-
-        if (!empty($username) && !empty($password)) 
+        if (!empty($_POST['username']) && !empty($_POST['password'])) 
         {
+            
+            $username = cleanParam($_POST['username']); 
+            $password = cleanParam($_POST['password']);
 
             $validation = UserController::getDataLogin($username,$password);
 
             if($validation)
             {
-                $response = array('estado' => true );
+                $uData = UserController::getDataUser();
+                $response = 
+                [
+                    'estado'       => true,
+                    'nombre'       => $uData->getName(),
+                    'email'        => $uData->getEmail(),
+                    'id'           => $uData->getId(),
+                    'fecha'        => $uData->getDate(),
+                    'usuario'      => $uData->getUsername(),
+                    'privilegio'   => $uData->getPrivilegio()
+                ];
             }
-            else
-            {
-                $response = array('estado' => false );
-            }     
-        } 
-
+    
+        }
     }
 
     return printf(json_encode($response));

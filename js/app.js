@@ -21,7 +21,8 @@ $(document).ready(function()
 					  message: "Conectado correctamente, redirigiendo...",
 					  callback: function()
 					  {
-					  	 window.location.assign("panel.php");
+					  	 // window.location.assign("panel.php");
+					  	 console.log(validate.nombre);
 					  }
 					});
 				}
