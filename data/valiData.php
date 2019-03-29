@@ -17,11 +17,11 @@
 
             if($validation)
             {
-                $response = ['estado' => 'loggeado'];
+                $response = array('estado' => true );
             }
             else
             {
-                $response = ['estado' => 'No coinciden las credenciales'];
+                $response = array('estado' => false );
             }     
         } 
 

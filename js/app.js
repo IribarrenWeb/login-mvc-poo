@@ -1,5 +1,8 @@
-$(document).ready(function(){
-	$('button').on('click',function(){
+$(document).ready(function()
+{
+	$('button').on('click',function()
+	{
+
 		let username = $(':text').val()
 		let password = $(':password').val()
 
@@ -7,24 +10,39 @@ $(document).ready(function(){
 			url: '../data/valiData.php',
 			type: 'POST',
 			data: { username, password },
-			success: function()
+			success: function(response)
 			{
-				alert('loggeado');
+				let validate = JSON.parse(response);
+
+				if (validate.estado == true) 
+				{
+					$("body").overhang({
+					  type: "success",
+					  message: "Conectado correctamente, redirigiendo...",
+					  callback: function()
+					  {
+					  	 window.location.assign("panel.php");
+					  }
+					});
+				}
+				else
+				{
+					$("body").overhang({
+					  type: "error",
+					  message: "Credenciales incorrectas",
+					  closeConfirm: false
+					});
+				}
 			},
 			error: function()
 			{
-				alert('error');
+				$("body").overhang({
+				  type: "error",
+				  message: "Algo ha salido mal",
+				  closeConfirm: true
+				});
 			}
 		})
-		.done(function() {
-			console.log("success");
-		})
-		.fail(function() {
-			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
-		});
 	
 	})
 })

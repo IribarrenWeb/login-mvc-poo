@@ -12,7 +12,13 @@ header{
 	color: #fff;
 	display: flex;
 	font-family: sans-serif;
+	padding: 0 5%;
+	justify-content: space-between;
 	box-shadow: 0px 2px 8px grey;
+}
+
+hr{
+	margin-bottom: 8%;
 }
 
 #logo{
@@ -24,8 +30,7 @@ header{
 
 #nav{
 	align-self: center;
-	position: absolute;
-	right: 0;
+	clear: both;
 }
 
 #nav li{
@@ -45,7 +50,7 @@ header{
 
 #login{
 	padding:30px;
-	background: #f0efef;
+	background: #fff;
 	border-radius: 5px;
 	border: 1px solid lightgrey;
 	box-shadow: 0px 2px 5px grey;
@@ -53,40 +58,73 @@ header{
 
 #login h1{
 	text-align: center;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 #login input{
-	padding:10px;
+	padding:10px 45px;
 	border-radius: 5px;
 	border:1px solid grey;
-	margin: 10px auto;
+	margin: 20px auto;
 	display: block;
+	background: white;
 	width:-webkit-fill-available;
+	z-index: 1000;
+}
+
+.icon{
+	z-index: -20000;
+}
+
+.icon::before{
+	content: '';
+	position: absolute;
+	text-align: center;
+	padding: 7.5px 5px;
+	border-radius: 5px 0px 0px 5px;
+	border: 1px solid black;
+	display: block;
+	background: #f0f0f0;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 1rem;
+	color: black;
+	opacity: .7;
+	width: 1.5rem;
+}
+
+.user::before{
+	content: '\f508';
+}
+
+.pass::before{
+	content: '\f13e';
 }
 
 #login input:focus{
-	border:1px solid blue;
+	box-shadow: 0px 0px 5px #00adffad;
 	border-radius: 5px;
 	outline: none;
 }
 
 #login button{
-	display: block;
-	background: green;
+	display: inline-block;
+	background: #03b403;
 	padding:10px;
-	border: 1px solid darkgreen;
+	border: 1px solid #07b007;
 	border-radius: 5px;
-	width: 100%;
+	width: 50%;
+	margin: 0 25%;
 	color: #fff;
-	letter-spacing: 3px;
-	text-transform: capitalize;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: lighter;
 	margin-top: 30px;
-	box-shadow: 0px 3px 8px grey;
-	transition: .2s all ease; 
+	box-shadow: 0px 2px 4px grey;
+	transition: 1s all ease; 
 }
 
 #login button:hover{
-	background: darkgreen;
+	background: #00b000;
 	box-shadow: 0px 0px 5px grey inset;
 }

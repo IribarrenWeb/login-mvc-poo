@@ -6,10 +6,9 @@
 	
 	<title>LOGIN MVC POO</title>
 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" href="../css/overhang.min.css">
 	<link rel="stylesheet" href="../css/style.css">
-	<script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="../js/overhang.min.js" type="text/javascript"></script>
 </head>
 <body>
 	<header id="header" class="">
