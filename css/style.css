@@ -1,0 +1,91 @@
+*{
+	margin: 0;
+	padding:0;
+}
+
+body{
+	font-family: sans-serif;
+}
+
+header{
+	background: #000; 
+	color: #fff;
+	display: flex;
+	font-family: sans-serif;
+}
+
+#logo{
+	font-size: 40px;
+	padding: 20px;
+	display: inline-block;
+	text-shadow: 0px 0px 6px red;
+}
+
+#nav{
+	align-self: center;
+	position: absolute;
+	right: 0;
+}
+
+#nav li{
+	list-style: none;
+	display: inline-block;
+	padding: 30px;
+}
+
+#nav li a{
+	color: white;
+	text-decoration: none;
+}
+
+#content{
+	margin:5% 35%;
+}
+
+#login{
+	padding:30px;
+	background: #f0efef;
+	border-radius: 5px;
+	border: 1px solid lightgrey;
+	box-shadow: 0px 2px 5px grey;
+}
+
+#login h1{
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+#login input{
+	padding:10px;
+	border-radius: 5px;
+	border:1px solid grey;
+	margin: 10px auto;
+	display: block;
+	width:-webkit-fill-available;
+}
+
+#login input:focus{
+	border:1px solid blue;
+	border-radius: 5px;
+	outline: none;
+}
+
+#login button{
+	display: block;
+	background: green;
+	padding:10px;
+	border: 1px solid darkgreen;
+	border-radius: 5px;
+	width: 100%;
+	color: #fff;
+	letter-spacing: 3px;
+	text-transform: capitalize;
+	margin-top: 30px;
+	box-shadow: 0px 3px 8px grey;
+	transition: .2s all ease; 
+}
+
+#login button:hover{
+	background: darkgreen;
+	box-shadow: 0px 0px 5px grey inset;
+}
