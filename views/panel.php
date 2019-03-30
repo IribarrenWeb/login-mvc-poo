@@ -1,12 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Panel de administracion</title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
-	
-</body>
-</html>
+<?php 
+
+    if (!isset($_SESSION)) 
+    {
+        session_start();
+    }
+
+    if (!isset($_SESSION['usuario'])) 
+    {
+        header('location:index.php');
+    }
+
+    if ($_SESSION['usuario']['privilegio'] == 0) {
+        header('location:panelclient.php');
+    }
+
+        require_once '../includes/head.php'; 
+
+?>
+
+        <main id="content">
+            <div id="login">
+                <h1>Bienvenido | <span class="text-yellow"><?= ucwords($_SESSION['usuario']['nombre']); ?></span></h1>
+                <hr>
+                <h3>Panel de control <strong>Admin</strong></h3>
+                <br>
+                <p>
+                    <strong>Usuario:</strong>   <?= $_SESSION['usuario']['usuario'] ?>
+                </p>
+                <p>
+                    <strong>Email:</strong>   <?= $_SESSION['usuario']['email'] ?>
+                </p>
+                <p>
+                    <strong>Privilegio:</strong>   <span class="tag"><?= ($_SESSION['usuario']['privilegio'] == 1) ? 'Admin' : 'Usuario';  ?></span>
+                </p>
+                <p>
+                    <strong>Fecha de creacion:</strong>   <?= $_SESSION['usuario']['date'] ?>
+                </p>
+
+                <button class="bgred">Logout</button>
+            </div>
+        </main>
+
+<?php 
+
+        require_once '../includes/foot.php'; 
+
+?>

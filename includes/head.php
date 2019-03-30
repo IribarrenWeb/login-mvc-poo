@@ -1,3 +1,9 @@
+<?php 
+	if (!isset($_SESSION)) 
+    {
+        session_start();
+    } 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +23,16 @@
 		</div>
 		<div id="nav">
 			<ul>
-				<li><a href="#" title="">Login</a></li>
-				<li><a href="#" title="">Register</a></li>
+				<?php if (!isset($_SESSION['usuario'])): ?>
+
+					<li><a href="index.php" title="">Login</a></li>
+					<li><a href="register.php" title="">Register</a></li>
+				
+				<?php else : ?>
+
+					<li><a href="<?= ($_SESSION['usuario']['privilegio'] == 1) ? 'panel.php' : 'panelclient.php'?>" title="">Home</a></li>
+					<li><a href="#" title="">Panel Control</a></li>
+				<?php endif ?>
 			</ul>
 		</div>
 	</header><!-- /header -->

@@ -2,6 +2,11 @@
 
 	require_once "../data/userData.php";
 
+	if (!isset($_SESSION)) 
+	{
+		session_start();
+	}
+
 	/**
 	 * User controller
 	 */
@@ -34,6 +39,25 @@
 	    public static function getDataUser()
 	    {
 	    	$response = UserData::getUserData(self::$userData);
+
+	    	return $response;
+	    }
+
+	    public static function saveNewUser($username,$name,$password,$email)
+	    {
+	    	$data = new User;
+
+	    	$data->setUserName($username);
+	        $data->setPassword($password);
+	        $data->setName($name);
+	        $data->setEmail($email);
+
+	    	$response = UserData::saveUser($data);
+
+	    	if (!is_array($response)) 
+	    	{
+	    		$response = self::getDataLogin($username,$password);
+	    	}
 
 	    	return $response;
 	    }

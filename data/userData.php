@@ -39,7 +39,7 @@
 
 	    	$udata->setId($user['id']);
 	    	$udata->setEmail($user['email']);
-	    	$udata->setUsername($user['usuario']);
+	    	$udata->setUserName($user['usuario']);
 	    	$udata->setName($user['nombre']);
 	    	$udata->setPassword($user['password']);
 	    	$udata->setDate($user['date']);
@@ -47,4 +47,51 @@
 
 	    	return $udata;
 	    } 
+
+        public static function saveUser($dataUser)
+        {
+            Conection::getConecting();
+            
+            $sql = "SELECT * FROM usuarios WHERE usuario = :usuario AND email = :email";
+
+            $query = self::$conex->prepare($sql);
+
+            @$query->bindParam(':usuario',$dataUser->getUsername());
+            @$query->bindParam(':email',$dataUser->getEmail());
+            
+            $query->execute();
+
+
+            if ($query->rowCount() >=1) 
+            {
+                return 'ya hay alguien';
+            }
+            else
+            {
+                $sql = 'INSERT INTO usuarios (nombre,usuario,password,email,privilegio) VALUES(?,?,?,?,0)';
+
+                $query = self::$conex->prepare($sql);
+
+                @$query->bindParam(2,$dataUser->getUsername());
+                @$query->bindParam(4,$dataUser->getEmail());
+                @$query->bindParam(3,$dataUser->getPassword());
+                @$query->bindParam(1,$dataUser->getName());
+
+                $response = $query->execute();
+
+                if (!$response) {
+
+                    $error = 
+                    [
+                        'estado' => false,
+                        'error'  => $query->errorInfo()
+                    ];
+                    return $error;
+                }
+
+                return true;
+
+            }
+
+        }
 	}

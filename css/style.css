@@ -1,10 +1,17 @@
+/* Reset CSS */
 *{
 	margin: 0;
 	padding:0;
 }
 
+/* HTML tags CSS */
 body{
 	font-family: sans-serif;
+}
+
+p{
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
 
 header{
@@ -21,6 +28,29 @@ hr{
 	margin-bottom: 8%;
 }
 
+/* Colors and others CSS */
+.bgred{
+	background: red !important;
+	border-color: darkred !important;
+}
+
+.bgred:hover{
+	background: #c30202 !important;
+}
+
+.text-yellow{
+	color:#ffcd18 !important;
+}
+
+.tag{
+	padding: 5px;
+	border-radius: 8px;
+	display: inline-block;
+	background: lightblue;
+	box-shadow: 0px 2px 3px grey;
+}
+
+/* Brand CSS */
 #logo{
 	font-size: 40px;
 	padding: 20px;
@@ -28,6 +58,7 @@ hr{
 	text-shadow: 0px 0px 6px red;
 }
 
+/* Nav CSS */
 #nav{
 	align-self: center;
 	clear: both;
@@ -75,10 +106,12 @@ hr{
 	transform: scale(1);
 }
 
+/* Content CSS */
 #content{
 	margin:5% 35%;
 }
 
+/* Login form and Button CSS */
 #login{
 	padding:30px;
 	background: #fff;
@@ -93,6 +126,12 @@ hr{
 	margin-bottom: 20px;
 }
 
+#login input:focus{
+	box-shadow: 0px 0px 5px #00adffad;
+	border-radius: 5px;
+	outline: none;
+}
+
 #login input{
 	padding:10px 45px;
 	border-radius: 5px;
@@ -105,6 +144,26 @@ hr{
 	overflow: hidden;
 }
 
+#login button{
+	display: inline-block;
+	background: #03b403;
+	padding:10px;
+	border: 1px solid #07b007;
+	border-radius: 5px;
+	width: 50%;
+	margin: 0 25%;
+	color: #fff;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: bolder;
+	margin-top: 30px;
+	box-shadow: 0px 2px 4px grey;
+	transition: 1s all ease; 
+	cursor: pointer;
+}
+
+
+/* Icon CSS */
 .icon{
 	display: block;
 	position: relative;
@@ -129,6 +188,7 @@ hr{
 	width: 1.5rem;
 }
 
+/* Inputs set ::before icons */
 .user::before{
 	content: '\f508';
 }
@@ -137,30 +197,16 @@ hr{
 	content: '\f13e';
 }
 
-#login input:focus{
-	box-shadow: 0px 0px 5px #00adffad;
-	border-radius: 5px;
-	outline: none;
+.name::before{
+	content: '\f5b7';
 }
 
-#login button{
-	display: inline-block;
-	background: #03b403;
-	padding:10px;
-	border: 1px solid #07b007;
-	border-radius: 5px;
-	width: 50%;
-	margin: 0 25%;
-	color: #fff;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	font-weight: lighter;
-	margin-top: 30px;
-	box-shadow: 0px 2px 4px grey;
-	transition: 1s all ease; 
+.email::before{
+	content: '\f1fa';
 }
 
 #login button:hover{
 	background: #00b000;
 	box-shadow: 0px 0px 5px grey inset;
 }
+
